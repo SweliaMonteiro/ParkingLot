@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import enums.BillStatus;
 import enums.PaymentMode;
 import enums.PaymentStatus;
 import exceptions.BillNumberNotFound;
@@ -31,6 +32,9 @@ public class PaymentService {
 		// Get the Bill from the DB for the given bill number
 		Bill bill = billRepository.getBillByBillNumber(billNumber);
 
+		// To keep count of successful payments
+		int paymentSuccessCount = 0;
+
 		// For each Payment Mode create a Payment object and save in DB
 		for(PaymentMode paymentMode:amountPerPaymentMode.keySet()) {
 			Payment payment = new Payment();
@@ -47,11 +51,32 @@ public class PaymentService {
 			PaymentStatus paymentStatus = paymentModeStrategy.payBill(payment);
 			payment.setPaymentStatus(paymentStatus);
 
+			if(paymentStatus.equals(PaymentStatus.SUCCESS)) {
+				paymentSuccessCount++;
+			}
+
 			// Save the Payment in the DB, will have Id after saving in the DB
 			payment = paymentRepository.savePayment(payment);
 
 			payments.add(payment);
 		}
+
+		// If all Payments are successful then Bill is paid
+		if(paymentSuccessCount == amountPerPaymentMode.size()) {
+			bill.setBillStatus(BillStatus.PAID);
+		}
+		// If there are no successful payments then Bill is unpaid
+		else if(paymentSuccessCount == 0) {
+			bill.setBillStatus(BillStatus.UNPAID);
+		}
+		// Else the Bill is partially paid
+		else {
+			bill.setBillStatus(BillStatus.PARTIALLY_PAID);
+		}
+
+		// Update the Bill with the list of Payments and update the previous record of Bill in DB
+		bill.setPayments(payments);
+		billRepository.saveBill(bill);
 
 		return payments;
 	}
