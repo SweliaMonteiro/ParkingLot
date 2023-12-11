@@ -1,13 +1,16 @@
 package dto;
 
+import java.util.Map;
+
+import enums.PaymentMode;
+import enums.PaymentStatus;
 import enums.ResponseType;
 
 public class PayBillResponseDTO {
-	
+
 	private ResponseType responseStatus;
 	private String responseMessage;
-	private String billNumber;
-	private int amount;
+	private Map<PaymentMode, PaymentStatus> paymentStatusPerPaymentMode;
 
 	public ResponseType getResponseStatus() {
 		return responseStatus;
@@ -25,20 +28,12 @@ public class PayBillResponseDTO {
 		this.responseMessage = responseMessage;
 	}
 
-	public String getBillNumber() {
-		return billNumber;
+	public Map<PaymentMode, PaymentStatus> getPaymentStatusPerPaymentMode() {
+		return paymentStatusPerPaymentMode;
 	}
 
-	public void setBillNumber(String billNumber) {
-		this.billNumber = billNumber;
-	}
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setPaymentStatusPerPaymentMode(Map<PaymentMode, PaymentStatus> paymentStatusPerPaymentMode) {
+		this.paymentStatusPerPaymentMode = paymentStatusPerPaymentMode;
 	}
 
 }

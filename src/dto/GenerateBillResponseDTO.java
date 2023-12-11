@@ -1,14 +1,13 @@
 package dto;
 
 import enums.ResponseType;
-import models.ParkingSlot;
 
-public class IssueTicketResponseDTO {
+public class GenerateBillResponseDTO {
 
 	private ResponseType responseStatus;
 	private String responseMessage;
-	private String ticketNumber;
-	private ParkingSlot parkingSlot;
+	private String billNumber;
+	private int amount;
 
 	public ResponseType getResponseStatus() {
 		return responseStatus;
@@ -26,20 +25,20 @@ public class IssueTicketResponseDTO {
 		this.responseMessage = responseMessage;
 	}
 
-	public String getTicketNumber() {
-		return ticketNumber;
+	public String getBillNumber() {
+		return billNumber;
 	}
 
-	public void setTicketNumber(String ticketNumber) {
-		this.ticketNumber = ticketNumber;
+	public void setBillNumber(String billNumber) {
+		this.billNumber = billNumber;
 	}
 
-	public ParkingSlot getParkingSlot() {
-		return parkingSlot;
+	public int getAmount() {
+		return amount;
 	}
 
-	public void setParkingSlot(ParkingSlot parkingSlot) {
-		this.parkingSlot = parkingSlot;
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 
 }

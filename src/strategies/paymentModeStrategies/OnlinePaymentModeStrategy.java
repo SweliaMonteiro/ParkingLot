@@ -1,13 +1,12 @@
 package strategies.paymentModeStrategies;
 
 import enums.PaymentStatus;
-import models.Bill;
-import models.Ticket;
+import models.Payment;
 
 public class OnlinePaymentModeStrategy implements PaymentModeStrategy {
 
 	@Override
-	public PaymentStatus payBill(Ticket ticket, Bill bill) {
+	public PaymentStatus payBill(Payment payment) {
 		// TODO Auto-generated method stub
 		return null;
 	}

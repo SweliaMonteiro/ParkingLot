@@ -1,46 +1,28 @@
 package dto;
 
-import java.util.List;
+import java.util.Map;
 
 import enums.PaymentMode;
 
 public class PayBillRequestDTO {
-	
-	private String ticketNumber;
-	private int gateNumber;
-	private List<PaymentMode> paymentModes;
-	private String parkingLotName;
 
-	public String getTicketNumber() {
-		return ticketNumber;
+	private String billNumber; 
+	private Map<PaymentMode, Integer> amountPerPaymentMode;
+
+	public String getBillNumber() {
+		return billNumber;
 	}
 
-	public void setTicketNumber(String ticketNumber) {
-		this.ticketNumber = ticketNumber;
+	public void setBillNumber(String billNumber) {
+		this.billNumber = billNumber;
 	}
 
-	public int getGateNumber() {
-		return gateNumber;
-	}
-	
-	public void setGateNumber(int gateNumber) {
-		this.gateNumber = gateNumber;
+	public Map<PaymentMode, Integer> getAmountPerPaymentMode() {
+		return amountPerPaymentMode;
 	}
 
-	public List<PaymentMode> getPaymentModes() {
-		return paymentModes;
-	}
-
-	public void setPaymentModes(List<PaymentMode> paymentModes) {
-		this.paymentModes = paymentModes;
-	}
-
-	public String getParkingLotName() {
-		return parkingLotName;
-	}
-
-	public void setParkingLotName(String parkingLotName) {
-		this.parkingLotName = parkingLotName;
+	public void setAmountPerPaymentMode(Map<PaymentMode, Integer> amountPerPaymentMode) {
+		this.amountPerPaymentMode = amountPerPaymentMode;
 	}
 
 }

@@ -7,11 +7,11 @@ import java.util.TreeMap;
 import models.Vehicle;
 
 public class VehicleRepository {
-	
+
 	// Mocking the DB
 	private Map<String, Vehicle> vehiclesMap = new TreeMap<String, Vehicle>();
-	
-	
+
+
 	public Optional<Vehicle> getVehicleByVehicleNumber(String vehicleNumber) {
 		// Get vehicle details for the given vehicle number from the DB if present in the DB
 		for(String vehicleNum:vehiclesMap.keySet()) {
@@ -21,8 +21,8 @@ public class VehicleRepository {
 		}
 		return Optional.empty();
 	}
-	
-	
+
+
 	public Vehicle saveVehicle(Vehicle vehicle) {
 		// Save the new vehicle details in the DB
 		vehiclesMap.put(vehicle.getVehicleNumber(), vehicle);

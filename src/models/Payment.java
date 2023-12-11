@@ -2,8 +2,6 @@ package models;
 
 import enums.PaymentMode;
 import enums.PaymentStatus;
-import factories.PaymentModeStrategyFactory;
-import strategies.paymentModeStrategies.PaymentModeStrategy;
 
 public class Payment extends BaseModel {
 	
@@ -12,11 +10,6 @@ public class Payment extends BaseModel {
 	private Bill bill;
 	private PaymentMode paymentMode;
 	private PaymentStatus paymentStatus;
-	
-	public void payBill(Ticket ticket) {
-		PaymentModeStrategy paymentModeStrategy = PaymentModeStrategyFactory.getPaymentModeStrategy(paymentMode);
-		paymentStatus = paymentModeStrategy.payBill(ticket, bill);
-	}
 	
 	public String getReferenceId() {
 		return referenceId;

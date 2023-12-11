@@ -26,7 +26,7 @@ public class TicketService {
 	static {
 		ticketNumber = 1;
 	}
-	
+
 	ParkingLotRepository parkingLotRepository;
 	VehicleRepository vehicleRepository;
 	GateRepository gateRepository;

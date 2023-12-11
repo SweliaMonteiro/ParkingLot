@@ -1,11 +1,10 @@
 package strategies.paymentModeStrategies;
 
 import enums.PaymentStatus;
-import models.Bill;
-import models.Ticket;
+import models.Payment;
 
 public interface PaymentModeStrategy {
 	
-	public PaymentStatus payBill(Ticket ticket, Bill bill);
+	public PaymentStatus payBill(Payment payment);
 
 }

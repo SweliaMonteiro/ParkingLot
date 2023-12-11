@@ -6,11 +6,11 @@ import java.util.TreeMap;
 import models.Payment;
 
 public class PaymentRepository {
-	
+
 	// Mocking the DB
 	Map<String, Payment> paymentMap = new TreeMap<String, Payment>();
-		
-		
+
+
 	public Payment savePayment(Payment payment) {
 		// Save the new payment details in the DB
 		paymentMap.put(payment.getBill().getBillNumber(), payment);
